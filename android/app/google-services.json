@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "952956909410",
+    "project_id": "tugasbesar-80e27",
+    "storage_bucket": "tugasbesar-80e27.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952956909410:android:d2561f092675282c00de3b",
+        "android_client_info": {
+          "package_name": "com.example.tugasbesar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCq1oBUsVIiJuDFcrAv7Q4brEEY9mqUxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
