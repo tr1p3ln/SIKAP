@@ -12,32 +12,46 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  // Data login yang valid
+  // Data login mahasiswa valid
   final String validEmail = "user@example.com";
   final String validPassword = "password123";
 
-  void login() {
-    final String email = emailController.text;
-    final String password = passwordController.text;
+  //data login dosen valid 
+  final String dosenEmail = "dosen@example.com";
+  final String dosenPassword = "password321";
 
-    if (email == validEmail && password == validPassword) {
-      Navigator.pushNamed(context, 'next_screen'); // Ganti 'next_screen' dengan nama route halaman selanjutnya
-    } else {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Login Gagal'),
-          content: const Text('Email atau password salah.'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
-    }
+  //data login admin valid
+  final String adminEmail = "admin@example.com";
+  final String adminPassword = "password231";
+
+
+  void login() {
+  final String email = emailController.text;
+  final String password = passwordController.text;
+
+  if (email == validEmail && password == validPassword) {
+    Navigator.pushNamed(context, 'dashboard_Mahasiswa');
+  } else if (email == dosenEmail && password == dosenPassword) {
+    Navigator.pushNamed(context, 'dashboard_Dosen');
+  } else if (email == adminEmail && password == adminPassword) {
+    Navigator.pushNamed(context, 'dashboard_Admin');  // Assuming you have an admin dashboard route
+  } else {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Login Gagal'),
+        content: const Text('Email atau password salah.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +135,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: (){
-                          Navigator.pushNamed(context, 'dashboard_Mahasiswa');
+                          // Navigator.pushNamed(context, 'dashboard_Dosen');
+                          login();  // Panggil fungsi login yang sudah Anda buat untuk validasi login
+                          // Navigator.pushNamed(context, 'dashboard_Mahasiswa');
                         },
                         child: const Text(
                           'Login',

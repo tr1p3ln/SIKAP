@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:tugasbesar/src/themes/theme.dart';
 import 'package:tugasbesar/src/themes/custome_themes/colors.dart';
 
 class CustomButton extends StatelessWidget {

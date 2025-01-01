@@ -18,7 +18,7 @@ class Forminputaddsidang extends StatelessWidget {
   });
 
   final _formKey = GlobalKey<FormState>();
-  final List<String> dosenList = ['Sofia Umaroh', 'Topik Ajaja', 'Asep Dkk'];
+  final List<String> dosenList = ['Prabowo', ' Jokowi', 'Anies'];
 
 
   @override
@@ -100,6 +100,7 @@ class Forminputaddsidang extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
+          
         ElevatedButton(
             onPressed: () {
               if (_formKey.currentState?.validate() ?? false) {

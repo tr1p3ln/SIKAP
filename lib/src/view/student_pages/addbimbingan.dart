@@ -3,7 +3,7 @@ import 'package:tugasbesar/src/widgets/appbarDrawer.dart';
 import 'package:tugasbesar/src/widgets/forminputAddbimbingan.dart';
 
 class Addbimbingan extends StatefulWidget {
-  final Function(String nomor, String dosen, String kegiatan, String tanggal, String status) onAddbimbingan;
+  final Function(String nomor,String nama, String dosen, String kegiatan, String tanggal, String status,String file) onAddbimbingan;
 
   const Addbimbingan({super.key, required this.onAddbimbingan});
 
@@ -13,19 +13,22 @@ class Addbimbingan extends StatefulWidget {
 
 class _AddbimbinganState extends State<Addbimbingan> {
   final TextEditingController nomorController = TextEditingController();
+  final TextEditingController namaController = TextEditingController();
   final TextEditingController dosenController = TextEditingController();
   final TextEditingController kegiatanController = TextEditingController();
   final TextEditingController tanggalController = TextEditingController();
+  String? file;
 
   void _submitForm() {
     final nomor = nomorController.text.trim();
+    final nama = namaController.text.trim();
     final dosen = dosenController.text.trim();
     final kegiatan = kegiatanController.text.trim();
     final tanggal = tanggalController.text.trim();
     const status = 'Process'; // Status default
 
-    if (nomor.isNotEmpty && dosen.isNotEmpty && kegiatan.isNotEmpty && tanggal.isNotEmpty) {
-      widget.onAddbimbingan(nomor, dosen, kegiatan, tanggal, status);
+    if (nomor.isNotEmpty && nama.isNotEmpty && dosen.isNotEmpty  && kegiatan.isNotEmpty && tanggal.isNotEmpty) {
+      widget.onAddbimbingan(nomor, nama, dosen, kegiatan, tanggal,status,file ?? '');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Data berhasil ditambahkan')),
       );
@@ -39,23 +42,27 @@ class _AddbimbinganState extends State<Addbimbingan> {
 
   void _clearForm() {
     nomorController.clear();
+    namaController.clear();
     dosenController.clear();
     kegiatanController.clear();
     tanggalController.clear();
+    file = null;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBaraddbimbingan(),
+      appBar: const AppBaraddbimbingan(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: FormInput(
           nomorController: nomorController,
+          namaController: namaController,
           dosenController: dosenController,
           kegiatanController: kegiatanController,
           tanggalController: tanggalController,
           onSubmit: _submitForm,
+          file: file?? '',
         ),
       ),
     );
@@ -65,6 +72,7 @@ class _AddbimbinganState extends State<Addbimbingan> {
   void dispose() {
     // Bersihkan controller untuk mencegah kebocoran memori
     nomorController.dispose();
+    namaController.dispose();
     dosenController.dispose();
     kegiatanController.dispose();
     tanggalController.dispose();

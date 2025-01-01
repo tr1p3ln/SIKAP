@@ -24,11 +24,8 @@ class _PagesProfileState extends State<PagesProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey[200],
-        title: const Text('Profile'),
-      ),
-      drawer: MyDrawer(), // Use the custom Drawer widget
+      appBar: const AppbarProfile(),
+      drawer: const MyDrawer(), // Use the custom Drawer widget
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(

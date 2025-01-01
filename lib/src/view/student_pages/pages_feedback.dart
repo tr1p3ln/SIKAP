@@ -11,10 +11,10 @@ class PagesFeedback extends StatefulWidget {
 class _PagesFeedbackState extends State<PagesFeedback> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: AppBarFeedback(),
       drawer: MyDrawer(),
-      body: const Center(
+      body: Center(
         child: Text('This is the Page Feedback'),
       ),
     );

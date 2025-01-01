@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugasbesar/src/widgets/appbarDrawer.dart';
 
 class DashboardMahasiswa extends StatefulWidget {
   const DashboardMahasiswa({super.key});
@@ -11,80 +12,9 @@ class _DashboardMahasiswaState extends State<DashboardMahasiswa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey[200],
-        title: const Text('Dashboard Mahasiswa'),
-      ),
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            // Logo ITENAS
-            Container(
-              height: 100,
-              alignment: Alignment.center,
-              child: Image.asset(
-                'lib/src/assets/images/logoitenas.jpg',
-                height: 80,
-                fit: BoxFit.contain,
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              'KP ITENAS',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Profile'),
-              onTap: () {
-                Navigator.pushNamed(context, 'pages_profile');
-              },
-            ),
+    appBar: const AppbarMahasiswa(),
+    drawer: const MyDrawer(),
 
-            ListTile(
-              leading: const Icon(Icons.home_filled),
-              title: const Text('Dashboard'),
-              onTap: () {
-                Navigator.pushNamed(context,'dashboard_Mahasiswa');
-              },
-            ),
-
-            ListTile(
-              leading: const Icon(Icons.library_books_rounded),
-              title: const Text('Pengajuan Bimbingan'),
-              onTap: () {
-                Navigator.pushNamed(context, 'pages_bimbingan');
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.library_books_rounded),
-              title: const Text('Pengajuan Sidang'),
-              onTap: () {
-                Navigator.pushNamed(context, 'pages_sidang');
-              },
-            ),
-            
-            ListTile(
-              leading: const Icon(Icons.library_books_rounded),
-              title: const Text('Feedback'),
-              onTap: () {
-                Navigator.pushNamed(context, 'pages_sidang');
-              },
-            ),
-
-            const ListTile(
-              leading: Icon(Icons.exit_to_app_sharp),
-              title: Text('Logout'),
-              // onTap: () {
-              //   Navigator.pushNamed(context, 'register_Screen');
-              // },
-            ),
-          ],
-        ),
-      ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(20),
@@ -115,11 +45,10 @@ class _DashboardMahasiswaState extends State<DashboardMahasiswa> {
                   child: ListView.builder(
                     shrinkWrap: true, // Mengatasi konflik tinggi dinamis
                     itemCount: 5, // Jumlah item pada ListView
-                    physics: const NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(), //cari penjelasan nya 
                     itemBuilder: (context, index) {
                       return Container(
-                        padding: const EdgeInsets.all(
-                            10), // Ganti TSize.sm dengan nilai konkret
+                        padding: const EdgeInsets.all(10), // Ganti TSize.sm dengan nilai konkret
                         margin: const EdgeInsets.symmetric(vertical: 5),
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
