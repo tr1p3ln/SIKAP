@@ -8,50 +8,46 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool passwordVisible = false; // Untuk mengontrol visibilitas password
+  bool passwordVisible = false; // For controlling password visibility
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  // Data login mahasiswa valid
+  // Valid login data
   final String validEmail = "user@example.com";
   final String validPassword = "password123";
 
-  //data login dosen valid 
   final String dosenEmail = "dosen@example.com";
   final String dosenPassword = "password321";
 
-  //data login admin valid
   final String adminEmail = "admin@example.com";
   final String adminPassword = "password231";
 
-
   void login() {
-  final String email = emailController.text;
-  final String password = passwordController.text;
+    final String email = emailController.text;
+    final String password = passwordController.text;
 
-  if (email == validEmail && password == validPassword) {
-    Navigator.pushNamed(context, 'dashboard_Mahasiswa');
-  } else if (email == dosenEmail && password == dosenPassword) {
-    Navigator.pushNamed(context, 'dashboard_Dosen');
-  } else if (email == adminEmail && password == adminPassword) {
-    Navigator.pushNamed(context, 'dashboard_Admin');  // Assuming you have an admin dashboard route
-  } else {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Login Gagal'),
-        content: const Text('Email atau password salah.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
+    if (email == validEmail && password == validPassword) {
+      Navigator.pushNamed(context, 'dashboard_Mahasiswa');
+    } else if (email == dosenEmail && password == dosenPassword) {
+      Navigator.pushNamed(context, 'dashboard_Dosen');
+    } else if (email == adminEmail && password == adminPassword) {
+      Navigator.pushNamed(context, 'dashboard_Admin');
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Login Gagal'),
+          content: const Text('Email atau password salah.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Container dengan gambar di atas
+              // Logo Container
               Container(
                 height: 100,
                 width: double.infinity,
@@ -97,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 20),
-                      // TextField untuk email
+                      // Email TextField
                       TextField(
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
@@ -109,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      // TextField untuk password
+                      // Password TextField
                       TextField(
                         controller: passwordController,
                         obscureText: !passwordVisible,
@@ -134,11 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton(
-                        onPressed: (){
-                          // Navigator.pushNamed(context, 'dashboard_Dosen');
-                          login();  // Panggil fungsi login yang sudah Anda buat untuk validasi login
-                          // Navigator.pushNamed(context, 'dashboard_Mahasiswa');
-                        },
+                        onPressed: login, // Call login function
                         child: const Text(
                           'Login',
                           style: TextStyle(color: Colors.black),
@@ -150,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.pushNamed(context, 'register_Screen');
                         },
                         child: const Text(
-                          'Dont have an account? register here',
+                          'Don\'t have an account? Register here',
                           style: TextStyle(color: Colors.black, fontSize: 14.0),
                         ),
                       ),
